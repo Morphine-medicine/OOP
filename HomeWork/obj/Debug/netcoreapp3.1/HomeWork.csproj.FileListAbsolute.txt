@@ -1,0 +1,13 @@
+C:\Users\Dell\source\repos\HomeWork\bin\Debug\netcoreapp3.1\HomeWork.exe
+C:\Users\Dell\source\repos\HomeWork\bin\Debug\netcoreapp3.1\HomeWork.deps.json
+C:\Users\Dell\source\repos\HomeWork\bin\Debug\netcoreapp3.1\HomeWork.runtimeconfig.json
+C:\Users\Dell\source\repos\HomeWork\bin\Debug\netcoreapp3.1\HomeWork.runtimeconfig.dev.json
+C:\Users\Dell\source\repos\HomeWork\bin\Debug\netcoreapp3.1\HomeWork.dll
+C:\Users\Dell\source\repos\HomeWork\bin\Debug\netcoreapp3.1\HomeWork.pdb
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.csprojAssemblyReference.cache
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.AssemblyInfoInputs.cache
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.AssemblyInfo.cs
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.csproj.CoreCompileInputs.cache
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.dll
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.pdb
+C:\Users\Dell\source\repos\HomeWork\obj\Debug\netcoreapp3.1\HomeWork.genruntimeconfig.cache
