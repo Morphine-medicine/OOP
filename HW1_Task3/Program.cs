@@ -1,54 +1,101 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 namespace HW1_Task3
 {
+    class Currency
+    {
+        public double cost;
+        public string name;
+        public double CurrencyToUAH(double amount) => amount * cost;
+        
+        public double UAHToCurrency(double amount) => amount / cost;
+        
+        
+        public Currency(double Cost, string Name)
+        {
+            if (Cost > 0)
+            {
+                cost = Cost;
+                name = Name;
+            }
+            else
+            {
+                Console.WriteLine("Please, type valid cost of your currency:" + Name);
+            }
+        }
+        
+        
+    }
     class Converter
     {
-        public double USD;
-        public double EU;
-        public Converter( double usd, double euro)
+        public List<Currency> Currency;
+        public Converter(List<Currency> currencies)
         {
-            USD = usd;
-            EU = euro;
+            Currency = currencies;
         }
-        public double UAH_To_USD (double amount)
+        public void AddCurrency(Currency currency)
         {
-            return (amount * (1 / USD));
+            Currency.Add(currency);
         }
-        public double UAH_To_EU(double amount)
+        public double ChangeUAHToCurrency(string currencyName, double UAHAmount)
         {
-            return (amount * (1 / EU));
+            if (Currency.Exists(currency => currency.name == currencyName)) 
+            {
+                Currency neededCurrency = Currency.Find(currency => currency.name == currencyName);
+                return neededCurrency.UAHToCurrency(UAHAmount);
+            } else
+            {
+                Console.WriteLine("Oops, converter knows nothing about this currency");
+                return -1;
+            }
+            
         }
-        public double USD_To_UAH(double amount)
+        public double ChangeCurrencyToUAH(string currencyName, double CurrencyAmount)
         {
-            return (amount * USD);
+            if (Currency.Exists(currency => currency.name == currencyName))
+            {
+                Currency neededCurrency = Currency.Find(currency => currency.name == currencyName);
+                return neededCurrency.CurrencyToUAH(CurrencyAmount);
+            }
+            else
+            {
+                Console.WriteLine("Oops, converter knows nothing about this currency");
+                return -1;
+            }
         }
-        public double EU_To_UAH(double amount)
+        public double ChangeCurrencies(string firstCurrencyName, string secondCurrencyName, double CurrencyAmount)
         {
-            return (amount * EU);
+            double UAH = ChangeCurrencyToUAH(firstCurrencyName, CurrencyAmount);
+            if (UAH != -1)
+            {
+                return ChangeUAHToCurrency(secondCurrencyName, UAH);
+            }
+            else
+            {
+                return 0;
+            }
         }
-        public double EU_To_USD_with_UAH(double amount)
+        public void showCurrencies()
         {
-            return (UAH_To_USD(EU_To_UAH(amount)));
+            Currency.ForEach(currency => Console.WriteLine(currency.name + ": " + currency.cost));
         }
-        public double USD_To_EU_with_UAH(double amount)
-        {
-            return (UAH_To_EU(USD_To_UAH(amount)));
-        }
-
-
     }
     class Program
     {
         static void Main(string[] args)
         {
-            Converter c1 = new Converter(28.31, 33.18);
-            Console.WriteLine(c1.UAH_To_EU(1));
-            Console.WriteLine(c1.UAH_To_USD(1));
-            Console.WriteLine(c1.USD_To_UAH(1));
-            Console.WriteLine(c1.EU_To_UAH(1));
-            Console.WriteLine(c1.USD_To_EU_with_UAH(1));
-            Console.WriteLine(c1.EU_To_USD_with_UAH(1));
+            Currency usd = new Currency(27, "USD");
+            Currency euro = new Currency(30, "EUR");
+            Converter converter = new Converter(new List<Currency> { usd, euro });
+            converter.showCurrencies();
+            Console.WriteLine(converter.ChangeUAHToCurrency("USD", 27));
+            Console.WriteLine(converter.ChangeUAHToCurrency("EUR", 30));
+            Console.WriteLine(converter.ChangeUAHToCurrency("EU", 30));
+            Console.WriteLine(converter.ChangeCurrencies("EUR", "USD", 20));
+
+
         }
     }
 }
