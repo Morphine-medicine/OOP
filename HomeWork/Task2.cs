@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -15,15 +15,15 @@ namespace HomeWork
         }
         public void Relax()
         {
-            state += "\n Relax";
+            state += " Relax";
         }
         public void Read()
         {
-            state += "\n Read";
+            state += " Read";
         }
         public void Write()
         {
-            state += "\n Write";
+            state += " Write";
         }
 
         public abstract void Study();
@@ -34,7 +34,7 @@ namespace HomeWork
         public GoodStudent(string name)
             : base(name)
         {
-            state += "Good \n";
+            state += "Good";
         }
         override public void Study()
         {
@@ -46,7 +46,7 @@ namespace HomeWork
         public BadStudent(string name)
             : base(name)
         {
-            state += "Bad \n";
+            state += "Bad";
         }
         override public void Study()
         {
