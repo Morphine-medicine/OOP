@@ -1,0 +1,10 @@
+C:\Users\Dell\source\repos\HW4_6\bin\Debug\HW4_6.exe.config
+C:\Users\Dell\source\repos\HW4_6\bin\Debug\HW4_6.exe
+C:\Users\Dell\source\repos\HW4_6\bin\Debug\HW4_6.pdb
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.csprojAssemblyReference.cache
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.Form1.resources
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.Properties.Resources.resources
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.csproj.GenerateResource.cache
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.csproj.CoreCompileInputs.cache
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.exe
+C:\Users\Dell\source\repos\HW4_6\obj\Debug\HW4_6.pdb
