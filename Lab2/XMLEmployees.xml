@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Employees>
+	<Office OFFICE ="Kiyv">
+	<Employee
+		Name = "Anton Chernov"
+		Experience = "2"
+		Sex = "Male"
+		Status = "Billable"
+		Position = "Senior developer"
+		/>
+	<Employee
+		Name = "tim cook"
+		Experience = "5"
+		Sex = "Male"
+		Status = "Billable"
+		Position = "general director"
+		/>
+	<Employee
+		Name = "tim cook"
+		Experience = "5"
+		Sex = "Male"
+		Status = "Billable"
+		Position = "general director"
+		/>
+	</Office>
+	<Office OFFICE="California">
+		<Employee
+		Name = "tim cook"
+		Experience = "5"
+		Sex = "Male"
+		Status = "Billable"
+		Position = "general director"
+		/>
+	</Office>
+	
+	
+</Employees>

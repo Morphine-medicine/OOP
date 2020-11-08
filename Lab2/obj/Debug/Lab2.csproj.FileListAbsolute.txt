@@ -1,0 +1,10 @@
+C:\Users\Dell\source\repos\Lab2\bin\Debug\Lab2.exe.config
+C:\Users\Dell\source\repos\Lab2\bin\Debug\Lab2.exe
+C:\Users\Dell\source\repos\Lab2\bin\Debug\Lab2.pdb
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.csprojAssemblyReference.cache
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.Properties.Resources.resources
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.csproj.GenerateResource.cache
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.csproj.CoreCompileInputs.cache
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.exe
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.pdb
+C:\Users\Dell\source\repos\Lab2\obj\Debug\Lab2.XmlAnalizator.resources

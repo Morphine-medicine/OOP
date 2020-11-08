@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:output method="html" />
+	<xsl:template match="/">
+		<html>
+
+			<head>
+				<link rel="stylesheet" href="styles.css"/>
+			</head>
+			<body>
+				<table id="employees">
+					<tr>
+
+						<th>Office</th>
+						<th>Name</th>
+						<th>Sex</th>
+						<th>Position</th>
+						<th>Status</th>
+						<th>Experience in years</th>
+					</tr>
+					<xsl:for-each select="Employees/Office">
+						<tr>
+							<td>
+							<xsl:value-of select="@OFFICE"/>
+							</td>
+						</tr>
+						<xsl:for-each select="Employee">
+							<tr>
+								<td/>
+								<td>
+									<xsl:value-of select="@Name"/>
+								</td>
+								<td>
+									<xsl:value-of select="@Sex"/>
+								</td>
+								<td>
+									<xsl:value-of select="@Position"/>
+								</td>
+								<td>
+									<xsl:value-of select="@Status"/>
+								</td>
+								<td>
+									<xsl:value-of select="@Experience"/>
+								</td>
+								
+							</tr>
+						</xsl:for-each>
+					</xsl:for-each>
+					
+				</table>
+			</body>
+		</html>
+	</xsl:template>
+</xsl:stylesheet>
