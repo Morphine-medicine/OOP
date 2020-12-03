@@ -14,6 +14,7 @@ namespace Lab2
 {
     public partial class XmlAnalizator : Form
     {
+        List<Employee> chosenEmployees = new List<Employee>();
         public XmlAnalizator()
         {
             InitializeComponent();
@@ -114,6 +115,7 @@ namespace Lab2
                 analizatorXml = new AnalizatorLINQtoXML();
             }
             List<Employee> employees = analizatorXml.filterEmployees(employee);
+            chosenEmployees = employees;
 
             foreach (Employee employee1 in employees)
             {
@@ -155,6 +157,116 @@ namespace Lab2
             string fXML = @"C:\Users\Dell\source\repos\Lab2\XMLEmployees.xml";
             string fHTML = @"C:\Users\Dell\source\repos\Lab2\XMLEmployees.html";
             xslCompiledTransform.Transform(fXML, fHTML);
+        }
+
+        private void XmlAnalizator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var closeMsg = MessageBox.Show("Do you really want to close?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (closeMsg == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private XmlNode createEmployeeNode(Employee employee)
+        {
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml");
+            
+
+            XmlNode employeeNode = doc.CreateNode(XmlNodeType.Element, "Employee", "");
+            XmlAttribute attribute = doc.CreateAttribute("Name");
+            employeeNode.Attributes.Append(attribute);
+            attribute = doc.CreateAttribute("Experience");
+            employeeNode.Attributes.Append(attribute);
+            attribute = doc.CreateAttribute("Sex");
+            employeeNode.Attributes.Append(attribute);
+            attribute = doc.CreateAttribute("Status");
+            employeeNode.Attributes.Append(attribute);
+            attribute = doc.CreateAttribute("Position");
+            employeeNode.Attributes.Append(attribute);
+
+            employeeNode.Attributes["Name"].Value = employee.name;
+            employeeNode.Attributes["Experience"].Value = employee.experience;
+            employeeNode.Attributes["Sex"].Value = employee.sex;
+            employeeNode.Attributes["Status"].Value = employee.status;
+            employeeNode.Attributes["Position"].Value = employee.position;
+
+            return employeeNode.OwnerDocument.ImportNode(employeeNode, true);
+        }
+
+        private XmlNode createOfficeNode(XmlNode office)
+        {
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml");
+
+            XmlNode result = office.Clone();
+            return result.OwnerDocument.ImportNode(result, true);
+        }
+        private void ClearChosenXml()
+        {
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml");
+            XmlElement xmlElem = doc.DocumentElement;
+            xmlElem.RemoveAll();
+            doc.Save(@"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml");
+        }
+        private void TransformSelectedEmployeeXml()
+        {
+            string office = chosenEmployees[0].office;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml");
+            XmlElement xmlElem = doc.DocumentElement;
+            XmlNode officeNode = doc.CreateNode(XmlNodeType.Element, "Office", "");
+            XmlAttribute attribute = doc.CreateAttribute("OFFICE");
+            officeNode.Attributes.Append(attribute);
+            XmlNode xmlNode = null;
+            officeNode.Attributes["OFFICE"].Value = office;
+            foreach (Employee employee in chosenEmployees)
+            {
+                if (office != employee.office)
+                {
+                    xmlNode = xmlElem.OwnerDocument.ImportNode(createOfficeNode(officeNode), true);
+                    xmlElem.AppendChild(xmlNode);
+                    office = employee.office;
+                    officeNode.RemoveAll();
+                    attribute = doc.CreateAttribute("OFFICE");
+                    officeNode.Attributes.Append(attribute);
+                    officeNode.Attributes["OFFICE"].Value = office;
+                    
+                }
+                xmlNode = officeNode.OwnerDocument.ImportNode(createEmployeeNode(employee), true);
+                
+                officeNode.AppendChild(xmlNode);
+
+            }
+            xmlNode = xmlElem.OwnerDocument.ImportNode(createOfficeNode(officeNode), true);
+            xmlElem.AppendChild(xmlNode);
+            doc.Save(@"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml");
+        }
+        private void TransformCurrent_Click(object sender, EventArgs e)
+        {
+            if (chosenEmployees.Count == 0)
+            {
+                MessageBox.Show("There are no employees, nothing to transform");
+            } else
+            {
+                TransformSelectedEmployeeXml();
+                XslCompiledTransform xslCompiledTransform = new XslCompiledTransform();
+                xslCompiledTransform.Load(@"C:\Users\Dell\source\repos\Lab2\XMLEmployees.xst");
+                string fXML = @"C:\Users\Dell\source\repos\Lab2\XMLChosenEmployees.xml";
+                string fHTML = @"C:\Users\Dell\source\repos\Lab2\XMLEmployees.html";
+                xslCompiledTransform.Transform(fXML, fHTML);
+                ClearChosenXml();
+            }
         }
     }
 }

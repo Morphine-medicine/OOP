@@ -2,7 +2,7 @@
 <Employees>
 	<Office OFFICE ="Kiyv">
 	<Employee
-		Name = "Anton Chernov"
+		Name = "Donald Trump"
 		Experience = "2"
 		Sex = "Male"
 		Status = "Billable"
@@ -16,11 +16,11 @@
 		Position = "general director"
 		/>
 	<Employee
-		Name = "tim cook"
-		Experience = "5"
+		Name = "Gohn Fedor"
+		Experience = "1"
 		Sex = "Male"
-		Status = "Billable"
-		Position = "general director"
+		Status = "Bench"
+		Position = "QA"
 		/>
 	</Office>
 	<Office OFFICE="California">
