@@ -47,6 +47,7 @@
             this.Clear = new System.Windows.Forms.Button();
             this.EmployeesList = new System.Windows.Forms.RichTextBox();
             this.Transform = new System.Windows.Forms.Button();
+            this.TransformCurrent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameCheckBox
@@ -255,11 +256,23 @@
             this.Transform.UseVisualStyleBackColor = true;
             this.Transform.Click += new System.EventHandler(this.Transform_Click);
             // 
+            // TransformCurrent
+            // 
+            this.TransformCurrent.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TransformCurrent.Location = new System.Drawing.Point(243, 357);
+            this.TransformCurrent.Name = "TransformCurrent";
+            this.TransformCurrent.Size = new System.Drawing.Size(86, 68);
+            this.TransformCurrent.TabIndex = 19;
+            this.TransformCurrent.Text = "Transform Current";
+            this.TransformCurrent.UseVisualStyleBackColor = true;
+            this.TransformCurrent.Click += new System.EventHandler(this.TransformCurrent_Click);
+            // 
             // XmlAnalizator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TransformCurrent);
             this.Controls.Add(this.Transform);
             this.Controls.Add(this.EmployeesList);
             this.Controls.Add(this.Clear);
@@ -281,6 +294,7 @@
             this.Controls.Add(this.NameCheckBox);
             this.Name = "XmlAnalizator";
             this.Text = "XmlAnalizator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XmlAnalizator_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,6 +321,7 @@
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.RichTextBox EmployeesList;
         private System.Windows.Forms.Button Transform;
+        private System.Windows.Forms.Button TransformCurrent;
     }
 }
 
